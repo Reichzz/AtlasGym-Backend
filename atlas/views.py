@@ -8,7 +8,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     serializer_class = UsuarioSerializer
 
 class ProductoViewSet(viewsets.ModelViewSet):
-    queryset = Producto.objects.all()
+    queryset = Producto.objects.all().order_by('id_producto')
     serializer_class = ProductoSerializer
 
 class HistorialVentasViewSet(viewsets.ModelViewSet):
