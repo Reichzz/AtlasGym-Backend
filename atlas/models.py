@@ -22,11 +22,16 @@ class Producto(models.Model):
 class HistorialVentas(models.Model):
     id_venta = models.AutoField(primary_key=True)
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    nombre_producto = models.CharField(max_length=100, blank=True)
     fecha = models.DateTimeField(auto_now_add=True)
     cantidad = models.IntegerField()
     responsable = models.CharField(max_length=50)
     precio = models.FloatField() 
 
+    def save(self, *args, **kwargs):
+        self.nombre_producto = self.id_producto.nombre_producto
+        super(HistorialVentas, self).save(*args, **kwargs)
+    
     def __str__(self):
         return f'Venta {self.id_venta} - Producto {self.id_producto.nombre_producto}'
 
