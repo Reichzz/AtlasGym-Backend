@@ -34,6 +34,8 @@ class HistorialVentas(models.Model):
     
     def __str__(self):
         return f'Venta {self.id_venta} - Producto {self.id_producto.nombre_producto}'
+    class Meta:
+      ordering = ['-id_venta'] 
 
 class UsuarioVenta(models.Model):
     id = models.AutoField(primary_key=True)
