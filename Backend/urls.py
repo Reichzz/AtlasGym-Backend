@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from atlas.views import UsuarioViewSet, ProductoViewSet, HistorialVentasViewSet, UsuarioVentaViewSet
+from atlas.views import LoginView
 
 router = DefaultRouter()
 router.register(r'usuarios', UsuarioViewSet)
@@ -28,4 +29,5 @@ router.register(r'usuario-ventas', UsuarioVentaViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/login/', LoginView.as_view(), name='login'),
 ]
