@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Install dependencies
 RUN apt-get update && \
@@ -18,16 +18,15 @@ WORKDIR /app
 
 # Copy requirements.txt and install Python packages
 COPY requirements.txt /app/
-RUN python -m venv /opt/venv && \
-    . /opt/venv/bin/activate && \
+RUN python -m venv /opt/venv
+
+# Install Python packages
+RUN . /opt/venv/bin/activate && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy the application code
 COPY . /app/
-
-# Copy .env file
-COPY .env /app/
 
 # Ensure the virtual environment is activated
 ENV PATH="/opt/venv/bin:$PATH"
