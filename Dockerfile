@@ -5,10 +5,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN apt-get update && \
     apt-get install -y \
     build-essential \
-    default-libmysqlclient-dev \
     python3-dev \
     libssl-dev \
-    libffi-dev && \
+    libffi-dev \
+    libpq-dev && \  # Necesario para psycopg2
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -27,3 +27,4 @@ RUN python manage.py migrate && \
     python manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Backend.wsgi:application"]
+
