@@ -6,12 +6,11 @@ cement==2.8.2
 certifi==2024.6.2
 charset-normalizer==3.3.2
 click==8.1.7
-colorama==0.4.6
+colorama==0.4.3
 Django==5.0.6
-django-cors-headers==4.4.0
+django-cors-headers==4.3.1
 django-filter==24.2
 djangorestframework==3.15.1
-djangorestframework-simplejwt==5.3.1
 Flask==3.0.3
 Flask-SQLAlchemy==3.1.1
 greenlet==3.0.3
@@ -24,12 +23,9 @@ MarkupSafe==2.1.5
 mysqlclient==2.2.4
 packaging==24.1
 pathspec==0.10.1
-pluggy==1.5.0
 psycopg2-binary==2.9.9
 python-dateutil==2.9.0.post0
-PyJWT==2.8.0
 PyYAML==6.0.1
-python-decouple==3.8
 requests==2.32.3
 semantic-version==2.8.5
 setuptools==72.1.0
@@ -39,12 +35,10 @@ sqlparse==0.5.0
 termcolor==1.1.0
 typing_extensions==4.12.2
 tzdata==2024.1
-urllib3==2.2.1
+urllib3==1.26.19
 wcwidth==0.1.9
 Werkzeug==3.0.3
 whitenoise==6.7.0
-iniconfig==2.0.0
-pytest==8.2.2
 
 
 
