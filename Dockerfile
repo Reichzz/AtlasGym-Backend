@@ -1,5 +1,6 @@
 FROM python:3.11-slim
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
+ENV PATH="/opt/venv/bin:$PATH"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -11,22 +12,16 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV MYSQLCLIENT_CFLAGS="-I/usr/include/mysql"
-ENV MYSQLCLIENT_LDFLAGS="-L/usr/lib/mysql -lmysqlclient"
-
+RUN python -m venv /opt/venv
 
 WORKDIR /app
 
 COPY requirements.txt /app/
 
-RUN python -m venv /opt/venv && \
-    . /opt/venv/bin/activate && \
-    pip install --upgrade pip && \
+RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 COPY . /app/
-
-ENV PATH="/opt/venv/bin:$PATH"
 
 RUN python manage.py migrate && \
     python manage.py collectstatic --noinput
