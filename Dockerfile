@@ -8,8 +8,8 @@ RUN apt-get update && \
     python3-dev \
     libssl-dev \
     libffi-dev \
-    libpq-dev && \  # Necesario para psycopg2
-    apt-get clean && \
+    libpq-dev && \
+    APT-GET clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN python -m venv /opt/venv
@@ -27,4 +27,3 @@ RUN python manage.py migrate && \
     python manage.py collectstatic --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Backend.wsgi:application"]
-
